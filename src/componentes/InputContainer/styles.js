@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
         width: "100%",
         height: 60,
         fontSize: 18,
-        flex: 1,
         color: "#010101",
         marginLeft: 10,
     }
