@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Button, FlatList, Text, TextInput, View } from 'react-native';
 
 import { styles } from './styles';
+import { Link } from '@react-navigation/native';
 
 export default function Home() {
     const [task, setTask] = useState('');
@@ -22,6 +23,9 @@ export default function Home() {
 
     return (
         <View style={styles.container}>
+            <Link to="/ListPosts">
+                <Text>Vá para postagens</Text>
+            </Link>
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.input}
