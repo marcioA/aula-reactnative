@@ -9,12 +9,12 @@ const ScrollViewPost = ({ data }) => {
                 <View key={item.id}>
                     <View style={styles.header}>
                         <View style={styles.row}>
-                            <Image style={styles.smallAvatar} source={{ uri: item.userAvatar }} />
-                            <Text style={styles.userName}>{item.userName}</Text>
+                            {/* <Image style={styles.smallAvatar} source={{ uri: item.userAvatar }} /> */}
+                            <Text style={styles.userName}>{item.title}</Text>
                         </View>
                     </View>
-                    <Text style={styles.postDescription}>{item.postText}</Text>
-                    <Image style={styles.postImage} source={{ uri: item.postImage }} />
+                    <Text style={styles.postDescription}>{item.body}</Text>
+                    {/* <Image style={styles.postImage} source={{ uri: item.postImage }} /> */}
                 </View>
             ))}
         </ScrollView>

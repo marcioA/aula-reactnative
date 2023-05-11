@@ -4,8 +4,28 @@ import { styles } from './styles';
 import { Avatar } from '../../componentes/Avatar';
 import InputContainer from '../../componentes/InputContainer';
 import ScrollViewPost from '../../componentes/ScrollViewPost';
+import usePosts from '../../hooks/usePosts';
+import { useEffect, useState } from 'react';
 
 export default function ListaPost() {
+    const [posts, setPosts] = useState([])
+    const { evento } = usePosts();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function busca() {
+
+            const postsBd = await evento.buscaPosts();
+            if (postsBd) {
+                setPosts([...postsBd]);
+                setLoading(false);
+            }
+        }
+        busca();
+    }, []);
+
+    useEffect(() => { console.log(posts) }, [loading])
+
     const arrData = [
         {
             id: '1',
@@ -40,13 +60,17 @@ export default function ListaPost() {
             postImage: 'https://raw.githubusercontent.com/amandeepmittal/react-native-examples/main/rnStyledComponents/assets/images/post4.png'
         }
     ];
+
     return (
         <View style={styles.container}>
             <View style={styles.pageTop}>
                 <Avatar imageSource={"https://github.com/marcioA.png"} />
                 <InputContainer />
             </View>
-            <ScrollViewPost data={arrData} />
+            {posts && (
+
+                <ScrollViewPost data={posts} />
+            )}
         </View>
     )
 }

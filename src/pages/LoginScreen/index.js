@@ -3,6 +3,11 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { styles } from './style';
 import { Link, useNavigation } from '@react-navigation/native';
 
+const DATABASE_USERS = {
+    username: 'usuarioAletorio',
+    password: '123senha'
+};
+
 const LoginScreen = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -10,8 +15,11 @@ const LoginScreen = () => {
 
     const handleLogin = () => {
         // Lógica de autenticação aqui
-
+        // if (username === DATABASE_USERS.username && password === DATABASE_USERS.password)
         navigation.navigate('Home');
+        // else
+        //     alert('Usuário ou senha invalido');
+
     };
 
     return (
